@@ -1,14 +1,16 @@
-    body {
-      margin-bottom: 70px;
-    }
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #343a40;
+  color: #fff;
+  padding: 20px;
+}
 
-    footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: #343a40;
-      color: #fff;
-      padding: 20px;
-    }
-
+body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 60px; /* Высота футера плюс небольшой отступ */
+}

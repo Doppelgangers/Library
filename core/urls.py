@@ -11,6 +11,7 @@ urlpatterns = [
     path('book/<int:book_id>', views.book_for_id, name='book_for_id'),
     path('about/', views.about, name='about'),
     path('auth/', views.auth, name='auth'),
+    path('artwork/<slug:art_slug>', views.artwork_by_slug, name='artwork_by_slug')
 
 ]
 

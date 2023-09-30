@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" class="card-img" alt="Обложка">
+            {% else %}
+                <img src="placeholder.jpg" class="card-img" alt="Обложка">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">Пренадлежит серии: {{ post.series }}</p>
+                <p class="card-text">Номер тома или сезона: {{ post.season }}</p>
+                <p class="card-text">Количество глав/серий: {{ post.episodes }}</p>
+                <p class="card-text">Категория/Жанры: {{ post.category }}</p>
+                <p class="card-text">Год выхода: {{ post.year }}</p>
+                <p class="card-text">Автор: {{ post.author }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{ post.description }}</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -3,25 +3,86 @@
 {% block content %}
 
 
-    <h2>Книги</h2>
+<h2>Книги</h2>
 
-{% for book in books %}
+{% for art in artworks %}
     <div class="card">
-        {% if book.photo %}
-            <img src="{{ book.photo.url }}" class="card-img-top" alt="Фото">
-        {% endif %}
         <div class="card-body">
-            <h5 class="card-title"><a href="{% url 'book_for_id' book.id %}">{{ book.title }}</a></h5>
-            <p class="card-text">
-                {% if book.description|length > 300 %}
-                    {{ book.description|slice:":300" }}...
-                {% else %}
-                    {{ book.description }}
+            <h5 class="card-title"><a href="{{ art.get_absolute_url }}">{{ art.title }}</a></h5>
+            <div class="card-content">
+                {% if art.image %}
+                    <div class="card-image">
+                        <img src="{{ art.image.url }}" alt="Фото">
+                    </div>
                 {% endif %}
-            </p>
+                <div class="card-description">
+                    <p>{{ art.description }}</p>
+                </div>
+            </div>
         </div>
     </div>
 {% endfor %}
+
+ <style>
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-title {
+        margin-bottom: 10px;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .card-image {
+        width: 300px;
+        height: 300px;
+        margin-right: 20px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-description {
+        flex: 1;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    @media (max-width: 767px) {
+        .card-content {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-description {
+            text-align: left;
+        }
+    }
+</style>
 
 
 
