@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+
+    <h2>Книги</h2>
+
+{% for book in books %}
+    <div class="card">
+        {% if book.photo %}
+            <img src="{{ book.photo.url }}" class="card-img-top" alt="Фото">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'book_for_id' book.id %}">{{ book.title }}</a></h5>
+            <p class="card-text">
+                {% if book.description|length > 300 %}
+                    {{ book.description|slice:":300" }}...
+                {% else %}
+                    {{ book.description }}
+                {% endif %}
+            </p>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+{% endblock %}
