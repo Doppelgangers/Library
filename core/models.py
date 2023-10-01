@@ -5,6 +5,10 @@ from django.urls import reverse
 
 # Create your models here.
 
+class ActivitedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
 
 class Artwork(models.Model):
 
@@ -40,6 +44,9 @@ class Artwork(models.Model):
 
     slug = models.SlugField(verbose_name="URL", unique=True, db_index=True, blank=True)
     is_active = models.BooleanField(default=True)
+
+    objects = models.Manager()
+    activeted = ActivitedManager()
 
     type_artwork = models.ForeignKey('TypeArtwork', on_delete=models.PROTECT, verbose_name="Тип произведения", blank=True, null=True)
 

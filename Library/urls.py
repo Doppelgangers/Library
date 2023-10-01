@@ -24,6 +24,6 @@ from core import views
 urlpatterns = [
     path(r'admin/', admin.site.urls),
     path('', include('core.urls'))
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT, show_indexes=True)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT, show_indexes=True)
 
 handler404 = views.page_not_found

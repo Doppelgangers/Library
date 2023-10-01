@@ -17,7 +17,11 @@
                 <p class="card-text">Пренадлежит серии: {{ post.series }}</p>
                 <p class="card-text">Номер тома или сезона: {{ post.season }}</p>
                 <p class="card-text">Количество глав/серий: {{ post.episodes }}</p>
-                <p class="card-text">Категория/Жанры: {{ post.category }}</p>
+                <p class="card-text">Категория/Жанры:
+                    {% for category in post.category.values %}
+                        <a href="#">{{ category.name }}{% if not forloop.last %}, {% endif %}</a>
+                    {% endfor %}
+                </p>
                 <p class="card-text">Год выхода: {{ post.year }}</p>
                 <p class="card-text">Автор: {{ post.author }}</p>
             </div>

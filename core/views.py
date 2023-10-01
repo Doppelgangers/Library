@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from core.models import Artwork
 
@@ -34,8 +34,8 @@ def book_for_id(request, book_id):
 
 
 def artwork_by_slug(request, art_slug):
-    art = Artwork.objects.filter(slug=art_slug).first()
-
+    art = get_object_or_404(Artwork, slug=art_slug)
+    print(art.category.values())
     data = {
         'title': art.title,
         'menu': menu,
@@ -45,13 +45,14 @@ def artwork_by_slug(request, art_slug):
 
 
 def books(request):
-    arts = Artwork.objects.filter(is_active=True)
+    arts = Artwork.activeted.filter(is_active=True)
     data = {
         'title': 'Книги',
         'menu': menu,
         'artworks': arts
     }
     return render(request, 'core/books.html', context=data)
+
 
 def about(request):
     data = {

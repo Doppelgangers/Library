@@ -3,6 +3,8 @@
 {% block content %}
 
 
+
+
 <h2>Книги</h2>
 
 {% for art in artworks %}
@@ -22,8 +24,8 @@
         </div>
     </div>
 {% endfor %}
-
- <style>
+``````css
+<style>
     .card {
         margin-bottom: 20px;
     }
@@ -76,14 +78,15 @@
         .card-image {
             width: 100%;
             height: auto;
+            margin-right: 0;
+            margin-bottom: 10px;
         }
 
         .card-description {
-            text-align: left;
+            text-align: center;
         }
     }
 </style>
-
 
 
 {% endblock %}
